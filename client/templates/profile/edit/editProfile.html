@@ -1,0 +1,53 @@
+<template name="editProfile">
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <button type="button" style="text-align:left;" class="col-xs-10 btn btn-default btn-lg privacy-checkup"><i class="fa fa-user-secret pull-right" aria-hidden="true"></i> Paramètres de confidentialité</button>
+        <div class="col-xs-1"></div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-3 vcenter nopadding">
+            {{#if currentUser.profile_picture}}
+            {{else}}
+                <img src="/img/default_profile.jpg" class="img-responsive" />
+            {{/if}}
+        </div>
+        <div class="col-xs-7 vcenter" style="padding-right:0;">
+            <button type="button" class="col-xs-10 btn btn-primary btn-lg btn-block see-public-profile">Modifier ma photo</button>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+    <div class="bs-callout col-xs-12">
+
+            {{#autoForm collection="Meteor.users" doc=currentUser id="updateUserForm" type="update"}}
+                <fieldset>
+                <legend>À propos de vous</legend>
+                    <div class="form-group">
+                        {{> afFieldInput name='profile.gender' firstOption='(Genre)'}}
+                        {{#if afFieldIsInvalid name='profile.gender'}}
+                            <span class="help-block" style="color:#a94442;">{{afFieldMessage name='profile.gender'}}</span>
+                        {{/if}}
+                    </div>
+                    {{> afQuickField name='username'}}
+                    {{> afQuickField name='emails.0.address'}}
+                    {{> afQuickField name='profile.firstName'}}
+                    {{> afQuickField name='profile.lastName'}}
+                    {{> afQuickField name='profile.birthday' class='datepicker' placeholder='Année de naissance'}}
+                    {{> afQuickField name='profile.bio'}}
+                    {{> afQuickField name='profile.website'}}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Adresse</h3>
+                        </div>
+                        <div class="panel-body">
+                            {{> afQuickField name='profile.country'}}
+                            {{> afQuickField name='profile.region'}}
+                            {{> afQuickField name='profile.city'}}
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Valider</button>
+            {{/autoForm}}
+        </div>
+</template>

@@ -1,0 +1,75 @@
+<template name="publicProfile">
+    {{#unless profile.error}}
+        <div class="row">
+            <div class="col-xs-4 nopadding vtop">
+                <div class="col-xs-3 nopadding"></div>
+                <div class="col-xs-9 nopadding" style="text-align:left;">
+                    <button type="button" class="btn btn-default btn-lg go-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                </div>
+            </div><!--
+            --><div class="col-xs-4 nopadding vcenter">
+                {{#if profile.result.profile_picture}}
+                {{else}}
+                    <img src="/img/default_profile.jpg" style="border-radius:10px;" class="img-responsive center-block" />
+                {{/if}}
+
+            </div><!--
+            --><div class="col-xs-4 nopadding vcenter" style="text-align:center;">
+                    <button type="button" class="btn btn-default btn-lg send-msg" style="margin-bottom:5px;"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                    <br>
+                    <button type="button" class="btn btn-default btn-lg invite-group" style="margin-bottom:5px;"><i class="fa fa-beer" aria-hidden="true"></i></button>
+                    <br>
+                    <!-- if deja friend, btn suppr -->
+                    <button type="button" class="btn btn-default btn-lg add-friends" style="margin-bottom:5px;"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align:center;">
+                <span class="blue">{{profile.result.username}}</span> + rang
+                {{#if profile.result.email}}
+                    <br>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> {{profile.result.email}}
+                {{/if}}
+                {{#if profile.result.website}}
+                    <br>
+                    <i class="fa fa-external-link-square" aria-hidden="true"></i> {{profile.result.website}}
+                {{/if}}
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row" style="padding:0 25px;">
+            <div class="col-xs-8 well" style="min-height:135px;">
+                {{{gender profile.result.gender}}}
+                &nbsp;{{profile.result.firstName}} {{profile.result.lastName}}
+                {{#if profile.result.birthday}}
+                    <br>
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{profile.result.birthday}}
+                {{/if}}
+                {{#if or profile.result.country profile.result.region}}
+                    <br>
+                    <i class="fa fa-globe" aria-hidden="true"></i> {{profile.result.country}}{{#if profile.result.country}}{{#if profile.result.region}},{{/if}}{{/if}} {{profile.result.region}}
+                {{/if}}
+                {{#if profile.result.city}}
+                    <br>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> {{profile.result.city}}
+                {{/if}}
+            </div><!--
+            --><div class="col-xs-4" style="min-height:150px;">
+                <button type="button" class="btn btn-default btn-lg add-friends" style="position:absolute;width:65%;height:40%;left:25%;">
+                    0
+                    <br>
+                    <span style="font-size:60%;">contact</span>
+                </button>
+                <br>
+                <button type="button" class="btn btn-default btn-lg add-friends" style="position:absolute;width:65%;top:50%;height:40%;left:25%;">
+                    0
+                    <br>
+                    <span style="font-size:60%;">commun</span>
+                </button>
+            </div>
+        </div>
+    {{else}}
+        <button type="button" class="btn btn-default btn-lg go-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        Une erreur est survenue !
+    {{/unless}}
+</template>

@@ -1,0 +1,15 @@
+<template name="groupSee">
+<h3>{{ group.result.title }}</h3> 
+({{{ visibility group.result.visibility }}}) 
+{{#if equals group.result.author currentUser._id}} 
+<button class="btn btn-default" type="button">
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+</button>
+{{/if}}<br>
+{{ author.result.username }} etc<br>
+{{> gmapAddressPlace }}
+{{ group.result.date }} {{ group.result.time }}<br>
+{{ group.result.description }}<br>
+liste inscrit/liste attente<br>
+coms
+</template>

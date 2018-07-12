@@ -1,0 +1,9 @@
+<body style="height:100%;">
+    {{> sAlert}}
+    {{> applicationLayout}}
+</body>
+
+<template name="applicationLayout">
+  {{> Template.dynamic template=navbar}}
+  {{> Template.dynamic template=main}}
+</template>

@@ -1,0 +1,25 @@
+<template name="adddescription">
+    <div>
+        {{> gmapAddressPlace }}
+        <div class="bs-callout col-xs-12">
+
+            {{#autoForm collection="Groups" id="insertGroupForm" type="insert"}}
+                <fieldset>
+                <legend>Informations sur votre sortie</legend>
+                    {{> afQuickField name='title'}}
+                    {{> afQuickField name='description'}}
+                    {{> afQuickField name='number'}}
+                    <div class="form-group">
+                        {{> afFieldInput name='visibility' firstOption='(Visibilité)'}}
+                        {{#if afFieldIsInvalid name='visibility'}}
+                            <span class="help-block" style="color:#a94442;">{{afFieldMessage name='visibility'}}</span>
+                        {{/if}}
+                    </div>
+                    {{> afQuickField name='date' class='datepicker' placeholder='Choisir'}}
+                    {{> afQuickField name='time' class='timepicker' placeholder='Choisir'}}
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Valider</button>
+            {{/autoForm}}
+        </div>
+    </div>
+</template>

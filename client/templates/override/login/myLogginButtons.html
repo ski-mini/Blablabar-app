@@ -1,0 +1,48 @@
+<template name="my_loginButtonsLoggedOutDropdown">
+  <li id="login-dropdown-list" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-menu fa-user"></i> Connexion/Inscription <b class="caret"></b></a>
+    <div class="dropdown-menu">
+        {{> _loginButtonsLoggedOutAllServices}}
+    </div>
+  </li>
+</template>
+
+<template name="my_loginButtonsLoggedInDropdown">
+  <li id="login-dropdown-list" class="dropdown">
+    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+      <i class="fa fa-menu fa-user"></i> {{currentUser.username}}
+      <b class="caret"></b>
+    </a>
+    <div class="dropdown-menu col-sm-3">
+      {{#if inMessageOnlyFlow}}
+        {{> _loginButtonsMessages}}
+      {{else}}
+        {{#if inChangePasswordFlow}}
+          {{> _loginButtonsChangePassword}}
+        {{else}}
+          {{> _loginButtonsLoggedInDropdownActions}}
+        {{/if}}
+      {{/if}}
+    </div>
+  </li>
+</template>
+
+<template name="my_loginButtonsLoggedInDropdownActions">
+    <div class="row">
+        <div class="col-xs-3">
+          {{#if currentUser.profile_picture}}
+          {{else}}
+            <img src="/img/default_profile.jpg" class="img-responsive" />
+          {{/if}}
+        </div>
+        <div class="col-xs-9">
+            Nom<br>
+            Email<br>
+            Nombre de contact<br>
+            J'sais pas d'autres trucs
+        </div>
+    </div>
+    <button class="btn btn-default btn-block" id="login-buttons-open-profile">Modifier mon profil</button>
+    <!-- <button class="btn btn-default btn-block" id="login-buttons-open-change-password">Changer le mot de passe</button> -->
+    <button class="btn btn-block btn-primary" id="login-buttons-logout">Déconnexion</button>
+</template>

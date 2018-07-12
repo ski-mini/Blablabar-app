@@ -1,0 +1,42 @@
+.custom-navbar .fa-big {
+  font-size:22px;
+  line-height: 0.5;
+}
+
+.custom-navbar .fa-menu {
+  font-size:18px;
+  margin-right: 20px;
+}
+
+.custom-navbar button {
+  height:35px;
+}
+
+.custom-navbar-button {
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 9px 10px;
+  border-color: #ddd;
+}
+
+.custom-navbar-button:focus {
+  background-color: #ddd;
+  outline: 0 none;
+}
+
+.custom-navbar .brand {
+  text-align: center;
+  width: 60%;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+@media (min-width:767px) {
+  .custom-navbar .navbar-collapse{
+    display: inline-block;
+  }
+}

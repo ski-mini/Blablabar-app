@@ -1,0 +1,27 @@
+<template name="gmapAddressPlace">
+    <div class="bs-callout bs-callout-info col-xs-12">
+        <h4>Lieu choisi :</h4>
+        <br>
+        <div class="col-xs-8">
+            <address>
+                <strong>{{place.name}}</strong><br>
+                {{place.formatted_address}}<br>
+                {{place.formatted_phone_number}}
+            </address>
+        </div>
+        <div class="col-xs-4">
+            <div class="btn-group">
+                {{#if place.opening_hours.open_now}}
+                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ouvert <span class="caret"></span></button>
+                {{else}}
+                    <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fermé <span class="caret"></span></button>
+                {{/if}}
+                <ul class="dropdown-menu dropdown-menu-right">
+                    {{#each text in place.opening_hours.weekday_text}}
+                        <li><a href="">{{text}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>

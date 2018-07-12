@@ -1,0 +1,25 @@
+<template name="editPrivacy">
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <button type="button" class="col-xs-2 btn btn-default btn-lg open-profile"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <div class="col-xs-1"></div>
+        <button type="button" style="text-align:left;font-size:1.1em;" class="col-xs-7 btn btn-default btn-lg see-public-profile"><i class="fa fa-users pull-right" aria-hidden="true"></i> Voir mon profil public</button>
+        <div class="col-xs-1"></div>
+    </div>
+    <div class="bs-callout col-xs-12">
+
+            {{#autoForm collection="Meteor.users" doc=currentUser id="updateUserPrivacyForm" type="update"}}
+                <fieldset>
+                <legend>Paramètres de confidentialité</legend>
+                    {{> afQuickField name='profile.privacy.lastName' firstOption=false }}
+                    {{> afQuickField name='profile.privacy.firstName' firstOption=false }}
+                    {{> afQuickField name='profile.privacy.email' firstOption=false }}
+                    {{> afQuickField name='profile.privacy.birthday' firstOption=false }}
+                    {{> afQuickField name='profile.privacy.country' firstOption=false }}
+                    {{> afQuickField name='profile.privacy.region' firstOption=false }}
+                    {{> afQuickField name='profile.privacy.city' firstOption=false }}
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Valider</button>
+            {{/autoForm}}
+        </div>
+</template>

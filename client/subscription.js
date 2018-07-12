@@ -1,0 +1,1 @@
+GroupsHandle = Meteor.subscribe('Groups');
